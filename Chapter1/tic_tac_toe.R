@@ -232,4 +232,4 @@ plot(result_run, ty= "l")
 
 ## using 'runs()'
 result_runs <- runs(10, 100, 100, eps = 0.01, alpha = 0.5)
-plot(result_run, ty= "l")
+plot(result_runs, ty= "l")
