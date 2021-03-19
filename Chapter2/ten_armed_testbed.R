@@ -1,3 +1,6 @@
+# TODO: refactor it! 
+# TODO: comments
+
 library(purrr)
 library(ggplot2)
 
@@ -222,3 +225,40 @@ mat4 <- matrix(nrow = 2000 , ncol = 1000)
 for(i in 1:2000)
   mat4[i, ] <- bandit_agent(step_size = 0.4, is_gradient = T, is_gradient_baseline = F, add_to_reward = 4)$actions
 lines(colMeans(mat4), type = "l", col = "green")
+
+
+
+##figure 6
+# params <- list(
+#   ,
+#   list("step_size" = 2 ^ (-5:1), "is_gradient" = T, "is_gradient_baseline" = T),
+#   list("UCB_degree" = 2 ^ (-4:2), eps = 0),
+#   list("initial_action_value" = 2 ^ (-2:2), "learning_function" = learn_step_size)
+# )
+
+params <- c(2 ^ (-7:-2))
+
+mat <- matrix(nrow = 2000 , ncol = 6)
+for(i in 1:2000)
+  mat[i, ] <- colMeans(map_dfc(params, ~bandit_agent(eps = .x)$rewards))
+plot(matrix(data = c( -7:-2, colMeans(mat)), nrow = 6), type = "l", col = "red", xlim = c(-7, 2), ylim = c(1, 1.5))
+
+
+params <- c(2 ^ (-5:1))
+mat2 <- matrix(nrow = 2000 , ncol = 7)
+for(i in 1:2000)
+  mat2[i, ] <- colMeans(map_dfc(params, ~bandit_agent(step_size = .x, is_gradient = T, is_gradient_baseline = T)$rewards))
+lines(matrix(data = c( -5:1, colMeans(mat2)), nrow = 7), type = "l", col = "blue")
+
+params <- c(2 ^ (-4:2))
+mat3 <- matrix(nrow = 2000 , ncol = 8)
+for(i in 1:2000)
+  mat3[i, ] <- colMeans(map_dfc(params, ~bandit_agent(UCB_degree = .x, eps = 0)$rewards))
+lines(matrix(data = c(-4:2, colMeans(mat4)), nrow = 7), type = "l", col = "black")
+
+params <- c(2 ^ (-2:2))
+mat4 <- matrix(nrow = 2000 , ncol = 7)
+for(i in 1:2000)
+  mat4[i, ] <- colMeans(map_dfc(params, ~bandit_agent(initial_action_value = .x, learning_function = learn_step_size)$rewards))
+lines(matrix(data = c( -3:3, colMeans(mat4)), nrow = 7), type = "l", col = "green")
+
