@@ -34,7 +34,6 @@ main <- function(){
   failures <- 0
   step <- 0
   
-  step_count <- rep(NA, MAX_FAILURES)
   
   while(step < MAX_STEPS & failures < MAX_FAILURES){
     
@@ -55,7 +54,6 @@ main <- function(){
     if(box < 0){
       
       failed <- TRUE
-      step_count[failures] <- step
       failures <- failures + 1
       cat("Trial ", failures, " was ", step, " steps.\n")
       step <- 0 
@@ -95,10 +93,7 @@ main <- function(){
     cat("Pole not balanced. Stopping after ", failures, " failures.")
   else
     cat("Pole balanced successfully for at least ", step, " steps\n")
-  
-  step_count[failures] <- step
-  # step_count <- step_count[!is.na(step_count)]
-  invisible(step_count)
+
 }
 
 
@@ -202,10 +197,4 @@ get_box <- function(state) {
   }
   
   return(box + 1)
-}
-
-
-result <- matrix(ncol = 100, nrow = 100)
-for(i in 1:100){
-  result[i, ] <- main()
 }
