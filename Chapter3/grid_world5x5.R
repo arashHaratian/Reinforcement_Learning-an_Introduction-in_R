@@ -18,7 +18,6 @@ B_prime <- c("x" = 3, "y" = 4)
 cols <- 5
 rows <- 5
 
-ifelse(state%%5 == 0, state%%5 , state%/%5)
 
 is_off_grid <- function(state, action) {
   new_state <- next_state(state, action)
