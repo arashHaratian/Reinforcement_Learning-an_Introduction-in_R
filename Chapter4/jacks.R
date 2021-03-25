@@ -1,11 +1,6 @@
 library(tidyverse)
 library(reshape2)
 
-
-V <- policy <- matrix(0, nrow = 21, ncol = 21)
-
-
-
 load_P_and_R <- function(lambda_requests, lambda_dropoffs){
   requests <- 0
   R <- vector("double", length = 26)
@@ -37,19 +32,6 @@ load_P_and_R <- function(lambda_requests, lambda_dropoffs){
   
   return(list("P" = P, "R" = R))
 }
-
-
-
-
-
-loc1 <- load_P_and_R(lambda_requests = 3, lambda_dropoffs = 3)
-P1 <- loc1$P
-R1 <- loc1$R
-
-loc2 <- load_P_and_R(lambda_requests = 4, lambda_dropoffs = 2)
-P2 <- loc2$P
-R2 <- loc2$R
-
 
 
 backup_action <- function(n1, n2, action, discount = 0.9) {
@@ -105,7 +87,6 @@ policy_eval <- function(theta = 1e-7) {
 }
 
 
-
 policy_function <- function(n1, n2) {
   actions <- max(-5, (-n2)):min(5, n1)
   action_vals <- map_dbl(actions, backup_action, n1 = n1, n2 = n2)
@@ -129,6 +110,7 @@ greedify <- function() {
   return(is_policy_improved)
 }
 
+
 policy_iteration <- function(){
   count <- 1
   policies <- list()
@@ -147,6 +129,16 @@ policy_iteration <- function(){
 # plotting figure 4.2
 
 plot_fig4.2 <- function(){
+  V <<- policy <<- matrix(0, nrow = 21, ncol = 21)
+  loc1 <- load_P_and_R(lambda_requests = 3, lambda_dropoffs = 3)
+  P1 <<- loc1$P
+  R1 <<- loc1$R
+  
+  loc2 <- load_P_and_R(lambda_requests = 4, lambda_dropoffs = 2)
+  P2 <<- loc2$P
+  R2 <<- loc2$R
+  
+  
   result <- policy_iteration()
   
   
