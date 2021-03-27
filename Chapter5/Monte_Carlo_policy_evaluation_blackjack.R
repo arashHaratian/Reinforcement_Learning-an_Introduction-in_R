@@ -188,17 +188,21 @@ plot_fig5.1 <- function(is_3d = FALSE){
   
   experimnet(10000)
   
-  p1 <- ggplot(melt(V[, 12:21, 1]), aes(Var2, Var1)) +
+  p1 <- melt(V[, 12:21, 1]) %>% 
+    mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
+    ggplot(aes(Var1, Var2)) +
     geom_tile(aes(fill = value)) + 
     scale_fill_gradient2(low = "red", mid = "white", high = "green") +
     guides(fill = FALSE) +
-    labs(x = "player sum", y = "dealer showing", title = "no usable ace (10000 episodes)")
+    labs(x = "dealer showing", y = "player sum", title = "no usable ace (10000 episodes)")
   
   
-  p2 <- ggplot(melt(V[, 12:21, 2]), aes(Var2, Var1)) +
+  p2 <- melt(V[, 12:21, 2]) %>% 
+    mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
+    ggplot(aes(Var1, Var2)) +
     geom_tile(aes(fill = value)) + 
     scale_fill_gradient2(low = "red", mid = "white", high = "green") +
-    labs(x = "player sum", y = "dealer showing", title = "usable ace (10000 episodes)")
+    labs(x = "dealer showing", y = "player sum", title = "usable ace (10000 episodes)")
 
   
   
@@ -217,18 +221,21 @@ plot_fig5.1 <- function(is_3d = FALSE){
   #   subplot(p1, p2, p3, p4, nrows = 2)
   #   
   # } else {
-  p3 <- ggplot(melt(V[, 12:21, 1]), aes(Var2, Var1)) +
+  p3 <- melt(V[, 12:21, 1]) %>% 
+    mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
+    ggplot(aes(Var1, Var2)) +
     geom_tile(aes(fill = value)) + 
     scale_fill_gradient2(low = "red", mid = "white", high = "green") +
     guides(fill = FALSE) +
-    labs(x = "player sum", y = "dealer showing", title = "no usable ace (500000 episodes)")
+    labs(x = "dealer showing", y = "player sum", title = "no usable ace (500000 episodes)")
   
-  
-  p4 <- ggplot(melt(V[, 12:21, 2]), aes(Var2, Var1)) +
+  p4 <- melt(V[, 12:21, 2]) %>% 
+    mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
+    ggplot(aes(Var1, Var2)) +
     geom_tile(aes(fill = value)) + 
     scale_fill_gradient2(low = "red", mid = "white", high = "green") +
     guides(fill = FALSE) +
-    labs(x = "player sum", y = "dealer showing",  title = "usable ace (500000 episodes)")
+    labs(x = "dealer showing", y = "player sum",  title = "usable ace (500000 episodes)")
   
   wrap_plots(p1, p2, p3, p4, ncol = 2) + 
     plot_layout(guides = "collect")
