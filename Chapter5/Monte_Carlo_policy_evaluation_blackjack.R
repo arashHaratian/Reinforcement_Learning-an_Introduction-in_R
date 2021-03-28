@@ -26,17 +26,17 @@ episode <- function(init_state = NULL, init_action = NULL){
     dealer_card <- deal_card()
     player_card1 <- deal_card()
     player_card2 <- deal_card()
+    has_ace <- player_card1 == 1 | player_card2 == 1
+    player_sum <- player_card1 + player_card2 + ifelse(has_ace, 10, 0)
   } else {
     # for user input state:
-    # init_state must be a vector of 3 (dealer_card, player_card1, player_card2)
+    # init_state must be a vector of 3 (dealer_card, player_sum, has_ace)
     dealer_card <- init_state[[1]]
-    player_card1 <- init_state[[2]]
-    player_card2 <- init_state[[3]]
+    player_sum <- init_state[[2]]
+    has_ace <- init_state[[3]]
   }
   
   dealer_hidden_card <- deal_card()
-  has_ace <- player_card1 == 1 | player_card2 == 1
-  player_sum <- player_card1 + player_card2 + ifelse(has_ace, 10, 0)
   player_natrual <- player_sum == 21
 
   count <- 1
@@ -169,7 +169,7 @@ outcome <- function(dealer_card, dealer_hidden_card, player_sum, is_player_natru
 }
 
 
-experimnet <- function(num_episodes = 500000) {
+experiment <- function(num_episodes = 500000) {
   N <<- V <<- array(0, dim = c(10, 21, 2))
   policy <<- array(1, dim = c(10, 21, 2))
   policy[, 20:21, ] <<- 0
@@ -186,7 +186,7 @@ experimnet <- function(num_episodes = 500000) {
 
 plot_fig5.1 <- function(is_3d = FALSE){
   
-  experimnet(10000)
+  experiment(10000)
   
   p1 <- melt(V[, 12:21, 1]) %>% 
     mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
@@ -205,22 +205,8 @@ plot_fig5.1 <- function(is_3d = FALSE){
     labs(x = "dealer showing", y = "player sum", title = "usable ace (10000 episodes)")
 
   
-  
-  experimnet(500000)
-  
-  
-  # if(is_3d){
-  #   p3 <- plot_ly(z = V[, 12:21, 1], scene='scene3') %>% 
-  #     add_surface() %>% 
-  #     layout(showlegend = F, title = "no usable ace (500000 episodes)")
-  #   
-  #   p4 <- plot_ly(z = V[, 12:21, 2], scene='scene4') %>% 
-  #     add_surface() %>% 
-  #     layout(showlegend = F, title = "usable ace (500000 episodes)")
-  #   
-  #   subplot(p1, p2, p3, p4, nrows = 2)
-  #   
-  # } else {
+  experiment(500000)
+
   p3 <- melt(V[, 12:21, 1]) %>% 
     mutate(Var2 = as.factor(Var2 + 11), Var1 = as.factor(Var1)) %>% 
     ggplot(aes(Var1, Var2)) +
@@ -237,9 +223,7 @@ plot_fig5.1 <- function(is_3d = FALSE){
     guides(fill = FALSE) +
     labs(x = "dealer showing", y = "player sum",  title = "usable ace (500000 episodes)")
   
-  wrap_plots(p1, p2, p3, p4, ncol = 2) + 
-    plot_layout(guides = "collect")
-  # }
+  wrap_plots(p1, p2, p3, p4, ncol = 2, guides = "collect")
 }
 
 
@@ -247,7 +231,7 @@ plot_fig5.1 <- function(is_3d = FALSE){
 # library(plotly)  # for 3d plots
 ###----------- this function will work but not so good
 
-#   experimnet(10000)
+#   experiment(10000)
 #   
 #     p1 <- plot_ly(z = V[, 12:21, 1], scene='scene1') %>%
 #       add_surface() %>%
@@ -257,7 +241,7 @@ plot_fig5.1 <- function(is_3d = FALSE){
 #       add_surface() %>%
 #       layout(showlegend = F, title = "usable ace (10000 episodes)")
 # 
-#   experimnet(500000)
+#   experiment(500000)
 #   
 #     p3 <- plot_ly(z = V[, 12:21, 1], scene='scene3') %>%
 #       add_surface() %>%
