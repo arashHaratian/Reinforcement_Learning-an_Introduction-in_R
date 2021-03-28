@@ -1,6 +1,5 @@
 # tic tac toe
-#TODO: make it an shiny app
-#report bug in lisp version:  (defun run) call (init)
+#TODO: shiny app
 
 library(purrr)
 
