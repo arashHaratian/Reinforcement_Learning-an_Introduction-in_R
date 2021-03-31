@@ -71,8 +71,6 @@ batch_training <- function(num_episodes, terminal_state, method, alpha){
     batch_rewards[[i]] <- rewards
     
     while(TRUE){
-      if(any(is.na(V)))
-        browser()
       update <- vector("double", length = terminal_state)
       
       for(j in seq_len(length(batch_rewards))){
@@ -91,9 +89,6 @@ batch_training <- function(num_episodes, terminal_state, method, alpha){
       
       update <- update * alpha
       
-      
-      if(any(is.na(update)))
-        browser()
       
       if(sum(abs(update)) < 1e-3)
         break
