@@ -86,8 +86,8 @@ residual_error <- function(num_episodes, terminal_state, n, ...){
   rmse <- vector("double", num_episodes)
   for(i in seq_len(num_episodes)){
     episode(terminal_state, n = n, ...)
+    rmse[[i]] <- sqrt(mean((V[2:(terminal_state - 1)] - true_V) ^ 2))
   }
-  rmse <- sqrt(mean((V[2:(terminal_state - 1)] - true_V) ^ 2))
   return(rmse)
 }
 
@@ -109,14 +109,23 @@ plot_fig7.2 <- function() {
       for(alpha in alphas)
         errors[which(steps == step), which(alphas == alpha)] <- 
           errors[which(steps == step), which(alphas == alpha)] + 
-          residual_error(n = step, alpha = alpha, num_episodes = 10, terminal_state = 21)
-    # 
-    # errors <- errors +
-    #   cross2(steps, alphas) %>%
-    #   transpose() %>%
-    #   pmap_dbl(~residual_error(n = .x, alpha = .y, num_episodes = 10, terminal_state = 21) %>%
-    #              last())
+          sum(residual_error(n = step, alpha = alpha, num_episodes = 10, terminal_state = 21))
+   
   }
+  
+  df <- errors / 1000
+  
+  df %>% melt %>% 
+    ggplot(aes(x= Var2, y = value, group= Var1, color = as.factor(Var1))) +
+    geom_line()
+  
+  # 
+  # errors <- errors +
+  #   cross2(steps, alphas) %>%
+  #   transpose() %>%
+  #   pmap_dbl(~residual_error(n = .x, alpha = .y, num_episodes = 10, terminal_state = 21) %>%
+  #              last())
+  
   
   # df <-  data.frame("values" = errors / 100) %>%
   #      mutate(step = rep(1:10, each = 11), alpha = rep(1:11, times = 10))
@@ -124,9 +133,7 @@ plot_fig7.2 <- function() {
   #    ggplot(aes(x = alpha)) +
   #    geom_line(aes(y = values, group = step))
 
-  df %>% melt %>% 
-    ggplot(aes(x= Var2, y = value, group= Var1, color = as.factor(Var1))) +
-    geom_line()
+  
     
   
 }
