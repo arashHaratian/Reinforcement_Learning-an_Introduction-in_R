@@ -134,13 +134,13 @@ plot_fig6.5 <- function(){
     left_double_Q <- left_double_Q + left_count
   }
   counts$double_Q <- left_double_Q / 10000
-  
+  counts$optimal <- 0.05
   counts$episodes <- 1:300
   
   plot <- ggplot(counts, aes(x = episodes)) +
     geom_line(aes(y = single_Q, color = "Q-learning")) +
     geom_line(aes(y = double_Q, color = "double Q-learning")) +
-    geom_vline()
+    geom_line(aes(y = optimal, color = "optimal"), linetype = "longdash") +
     labs(y = "(%) left actions from A", color = "")
   
   return(plot)
