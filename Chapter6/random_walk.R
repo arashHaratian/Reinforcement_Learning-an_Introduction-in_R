@@ -41,7 +41,7 @@ episode <- function(terminal_state = 7, method = "TD", batch = FALSE, alpha = 0.
   return(list("states" = states, "rewards" = rep(reward, length(states) - 1)))
 }
 
-#calculating
+#calculating rmse
 residual_error <- function(num_episodes, terminal_state, ...){
   init_state_values(terminal_state)
   true_V <- seq_len(terminal_state - 2) / (terminal_state - 1)
