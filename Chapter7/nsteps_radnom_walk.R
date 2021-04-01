@@ -1,6 +1,7 @@
 library(tidyverse)
 library(reshape2)
 
+
 resample <- function(x, ...)
   x[sample.int(length(x), ...)]
 
@@ -59,7 +60,7 @@ episode <- function(terminal_state = 7, n, alpha = 0.1, discount = 1) {
       }
       
       if(tau + n <= episode_length){
-        G <- G + (discount ^ n) * V[ states[tau + n] ]
+        G <- G + (discount ^ n) * V[ states[tau + n + 1] ]
       }
       
       if(states[tau + 1] != 1 & states[tau + 1] != terminal_state)
@@ -75,8 +76,6 @@ episode <- function(terminal_state = 7, n, alpha = 0.1, discount = 1) {
   invisible(list("states" = states, "rewards" = rep(reward, length(states) - 1)))
 }
 
-# init_state_values(21)
-# episode(21, 4)
 
 
 residual_error <- function(num_episodes, terminal_state, n, ...){
@@ -91,73 +90,46 @@ residual_error <- function(num_episodes, terminal_state, n, ...){
   return(rmse)
 }
 
-# residual_error(100, 21, 4)
-
 
 plot_fig7.2 <- function() {
   
   steps <- 2 ^ (0:9)
   alphas <- seq(from = 0, to = 1, by = 0.05)
-  # alphas <- c(0, 0.1, 0.5)
   
-  # errors <- vector("double", 10 * 11)
-  errors <- matrix(0, nrow = 10, ncol = 21)
+  errors <- matrix(0, nrow = length(steps), ncol = length(alphas))
   
+  
+  ##----- tidy version (with purrr)
+
   for(run in 1:100){
-    
-    for(step in steps)
-      for(alpha in alphas)
-        errors[which(steps == step), which(alphas == alpha)] <- 
-          errors[which(steps == step), which(alphas == alpha)] + 
-          sum(residual_error(n = step, alpha = alpha, num_episodes = 10, terminal_state = 21))
-   
+    errors <- errors +
+      cross2(steps, alphas) %>%
+      transpose() %>%
+      pmap_dbl(~sum(residual_error(n = .x, alpha = .y, num_episodes = 10, terminal_state = 21)))
   }
   
-  df <- errors / 1000
+  ##----- simple version (with for loop)
   
-  df %>% melt %>% 
+  # errors <- matrix(0, nrow = length(steps), ncol = length(alphas))
+  # for(run in 1:100){
+  #   for(step in steps)
+  #     for(alpha in alphas)
+  #       errors[which(steps == step), which(alphas == alpha)] <-
+  #         errors[which(steps == step), which(alphas == alpha)] +
+  #         sum(residual_error(n = step, alpha = alpha, num_episodes = 10, terminal_state = 21))
+  # }
+  
+  plot <- melt(errors / 1000) %>%
+    mutate(Var2 = rep(alphas, each = length(steps)),
+           Var1 = rep(steps, times = length(alphas))) %>% 
     ggplot(aes(x= Var2, y = value, group= Var1, color = as.factor(Var1))) +
-    geom_line()
-  
-  # 
-  # errors <- errors +
-  #   cross2(steps, alphas) %>%
-  #   transpose() %>%
-  #   pmap_dbl(~residual_error(n = .x, alpha = .y, num_episodes = 10, terminal_state = 21) %>%
-  #              last())
+    geom_line() +
+    coord_cartesian(y = c(0.25, 0.55)) +
+    labs(x = expression(alpha), y  = "average RMSR over 19 states\nand first 10 episodes", color = "nsteps")
   
   
-  # df <-  data.frame("values" = errors / 100) %>%
-  #      mutate(step = rep(1:10, each = 11), alpha = rep(1:11, times = 10))
-  # df %>% 
-  #    ggplot(aes(x = alpha)) +
-  #    geom_line(aes(y = values, group = step))
-
-  
-    
-  
+  return(plot)
 }
 
 
-
-
-
-
-
-
-# 
-# init_state_values(21)
-# episode(21, n = 1)
-# V
-# 
-# 
-# 
-# 
-
-
-
-
-
-
-
-
+plot_fig7.2()
