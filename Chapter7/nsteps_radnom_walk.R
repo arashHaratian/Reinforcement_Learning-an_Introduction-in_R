@@ -91,6 +91,8 @@ residual_error <- function(num_episodes, terminal_state, n, ...){
 }
 
 
+# plotting figure 7.2
+
 plot_fig7.2 <- function() {
   
   steps <- 2 ^ (0:9)
