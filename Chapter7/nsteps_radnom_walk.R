@@ -6,13 +6,12 @@ resample <- function(x, ...)
   x[sample.int(length(x), ...)]
 
 
-init_state_values <- function(terminal_state = 7){
-  # V <<- c(0, rep(0, terminal_state - 2), 1)
+init_state_values <- function(terminal_state = 21){
   V <<- rep(0, terminal_state)
 }
 
 
-episode <- function(terminal_state = 7, n, alpha = 0.1, discount = 1) {
+episode <- function(terminal_state = 21, n, alpha = 0.1, discount = 1) {
   
   current_state <- terminal_state %/% 2 + 1   # middle state is the first state
   
