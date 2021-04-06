@@ -126,7 +126,7 @@ plot_fig7.2 <- function() {
     ggplot(aes(x= Var2, y = value, group= Var1, color = as.factor(Var1))) +
     geom_line() +
     coord_cartesian(y = c(0.25, 0.55)) +
-    labs(x = expression(alpha), y  = "average RMSR over 19 states\nand first 10 episodes", color = "nsteps")
+    labs(x = expression(alpha), y  = "average RMSE over 19 states\nand first 10 episodes", color = "nsteps")
   
   
   return(plot)
