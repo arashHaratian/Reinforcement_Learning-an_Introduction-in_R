@@ -86,11 +86,10 @@ plot_fig9.8 <- function(){
   desired_function <- map_dbl(range, ~targetf(.x/100))
   
   desired_function_line <- as.data.frame(desired_function) %>% 
-    imap(~geom_line(aes(y = .x, color = .y)) +
-           labs(title = ))
+    imap(~geom_line(aes(y = .x, color = .y)))
   
-  low <- min(map_dbl(r, min))
-  high <- max(map_dbl(r, max))
+  low <- min(map_dbl(result, min))
+  high <- max(map_dbl(result, max))
   
   plots <- result %>% 
     imap(~ggplot(data.frame("index" = 1:51), aes(x = index)) +
