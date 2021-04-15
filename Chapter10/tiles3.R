@@ -38,21 +38,21 @@ tiles <- function(IHT, assign_hash_function, num_tilings, state, action = NULL){
       b <- b + tilingX2
     }
     coordinates <- append(coordinates, action)
-    tiles[[tiling + 1]] <- hash_coords(paste0(coordinates, collapse = ""), IHT, assign_hash_function)
+    tiles[[tiling + 1]] <- .hash_coords(paste0(coordinates, collapse = ""), IHT, assign_hash_function)
   }
   
   return(tiles)
 }
 
 
-hash_coords <- function(coordinates, IHT, assign_hash_function) {
+.hash_coords <- function(coordinates, IHT, assign_hash_function) {
 
   assign_hash_function(coordinates, IHT)
-  return(get_index(coordinates, IHT))
+  return(.get_index(coordinates, IHT))
 }
 
 
-get_index <- function(coordinates, IHT){
+.get_index <- function(coordinates, IHT){
   return(get(coordinates, envir = IHT))
 }
 
@@ -61,8 +61,7 @@ get_index <- function(coordinates, IHT){
 # r <- initialize_IHT(1024)
 # hash1 <- r[[1]]
 # assign_hash1 <- r[[2]]
-# 
-# 
+
 # tiles(hash1, assign_hash1, 8, state = c(3.6, 7.21))
 # tiles(hash1, assign_hash1, 8, state = c(3.7, 7.21))
 # tiles(hash1, assign_hash1, 8, state = c(4, 7))
