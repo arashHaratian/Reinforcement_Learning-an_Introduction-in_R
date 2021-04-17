@@ -1,7 +1,7 @@
 library(tidyverse)
 library(reshape2)
 library(patchwork)
-source("./Chapter10/tiles3.R")  # or copy the codes
+source("./Chapter10/tiles3.R")  # or copy the source code
 
 
 resample <- function(x, ...)
@@ -21,7 +21,7 @@ init_weights <- function(size_val = 2048){
 
 mcar_step <- function(mcar_position, mcar_velocity, action){
 
-  mcar_velocity <- mcar_velocity + (action - 2) * 0.001 + -0.0025 * cos(3 * mcar_position) #TODO action - 1 
+  mcar_velocity <- mcar_velocity + (action - 2) * 0.001 + -0.0025 * cos(3 * mcar_position)
   mcar_velocity <- min(max(mcar_min_velocity, mcar_velocity), mcar_max_velocity)
   
   mcar_position <- mcar_position + mcar_velocity
@@ -193,6 +193,8 @@ run <- function(num_of_episodes,n ,alpha, ...){
   return(steps)
 }
 
+
+
 plot_fig10.1 <- function(target_episodes = c(1, 100, 1000, 9000), plot_heatmap = F){
   if(!plot_heatmap)
     library(plotly)
@@ -298,32 +300,9 @@ plot_fig10.3 <- function(runs = 10){
 
 
 
-
-# {
-#   ns <- 2 ^ (0:4)
-#   alphas <- seq(from = 0.2, to = 1.7, by = 0.1) # or use by = 0.05
-#   steps <- matrix(0, nrow = length(ns), ncol = length(alphas))
-#   
-#   for(run in 1:100){
-#     errors <- errors +
-#       cross2(ns, alphas) %>%
-#       transpose() %>%
-#       pmap_dbl( ~ sum(
-#         residual_error_semi_gradient_TD(
-#           n = .x,
-#           alpha = .y,
-#           num_of_groups = 20,
-#           num_episodes = 10,
-#           terminal_state = 1002,
-#           true_value = true_value)
-#       ))
-#   }
-#   
-# }
-
 plot_fig10.4 <- function(runs = 10){
     ns <- 2 ^ (0:4)
-    alphas <- seq(from = 0.2, to = 1.7, by = 0.25)
+    alphas <- seq(from = 0.2, to = 1.8, by = 0.2)
     steps <- matrix(0, nrow = length(ns), ncol = length(alphas)) 
     
     for(i in seq_len(runs)){
@@ -331,27 +310,35 @@ plot_fig10.4 <- function(runs = 10){
       steps <- steps + 
         cross2(ns, alphas) %>%
         transpose() %>%
-        pmap_dbl( ~if((.x == 8 & .y > 1) | (.x == 16 & .y > 0.75)){
-          15000
+        pmap_dbl( ~if((.x == 8 & .y > 0.9) | (.x == 16 & .y > 0.75) | (.x == 4 & .y > 1.4)){
+          # with these values, the algorithm did not converge.
+          # assigning some value bigger than y axis upper limit (300) then it will be trimmed in plot
+          20000 # (400 * 50)
         }else{
-          sum(run(500, n = .x, alpha = .y))
+          sum(run(50, n = .x, alpha = .y))
         })
     }
+
     
-    plot <- melt(steps / runs * 50) %>%
+    plot <- melt(steps / (runs * 50)) %>%
       mutate(Var2 = rep(alphas, each = length(ns)),
-             Var1 = rep(ns, times = length(alphas))) %>% 
-      ggplot(aes(x= Var2, y = value, group = Var1, color = as.factor(Var1))) +
+             Var1 = rep(ns, times = length(alphas))) %>%
+      ggplot(aes(x = Var2, y = value, group = Var1, color = as.factor(Var1))) +
       geom_line() +
-      labs(x = paste(expression(alpha), "x number of tilings (8)"), y  = "Steps per episode\naveraged over first 50 episodes", color = "nsteps")
+      coord_cartesian(ylim = c(220, 300)) +
+      labs(x = expression(paste(alpha, " x number of tilings (8)")), y  = "Steps per episode\naveraged over first 50 episodes", color = "nsteps")
     
+    return(plot)
 }
 
 
 
-plot_fig10.1(c(1, 1000, 9000))
-plot_fig10.2(3)
-plot_fig10.3(3)
+
+
+
+plot_fig10.1()
+plot_fig10.2(10)
+plot_fig10.3(10)
 plot_fig10.4(3)
 
 

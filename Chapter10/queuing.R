@@ -167,7 +167,7 @@ episode_differential_semi_gradient_sarsa <- function(IHT,
 
 # plotting the figure
 
-plot_fig10.5 <- function(){
+plot_fig10.5 <- function(iterations = 2e+06){
   
   # initialization
   init_weights()
@@ -177,7 +177,7 @@ plot_fig10.5 <- function(){
   assign_hash_table <- IHT[[2]]
   
   # run the algorithm
-  episode_differential_semi_gradient_sarsa(hash_table, assign_hash_table, 1e+06)
+  episode_differential_semi_gradient_sarsa(hash_table, assign_hash_table, iterations)
 
   
   # first plot
