@@ -101,6 +101,7 @@ residual_error <- function(num_episodes, terminal_state, ...) {
 
 
 
+# plotting figure 12.6 and 12.8
 
 plot_fig12.6 <- function() {
 
@@ -110,8 +111,6 @@ plot_fig12.6 <- function() {
 
   errors <- matrix(0, nrow = length(lambdas), ncol = length(alphas))
 
-
-  ##----- tidy version (with purrr)
 
   for(run in 1:50){
     errors <- errors +
@@ -141,12 +140,9 @@ plot_fig12.8 <- function() {
 
 
   lambdas <- c(0, 0.4, 0.8, 0.9, 0.95, 0.975, 0.99, 1)
-  alphas <- seq(from = 0, to = 1, length.out = 21)
+  alphas <- seq(from = 0, to = 1, length.out = 15)
 
   errors <- matrix(0, nrow = length(lambdas), ncol = length(alphas))
-
-
-  ##----- tidy version (with purrr)
 
   for(run in 1:50){
     errors <- errors +
