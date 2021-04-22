@@ -263,7 +263,7 @@ plot_fig12.10 <- function(runs = 10){
     coord_cartesian(ylim = c(180, 300)) +
     labs(title = "Sarsa(lambda) with replacing traces",
          x = expression(paste(alpha, " x number of tilings (8)")),
-         y  = "Steps per episode\naveraged over first 50 episodes", color = "lambda")
+         y  = "steps per episode\naveraged over first 50 episodes", color = "lambda")
   
   return(plot)
 }
@@ -277,11 +277,11 @@ plot_fig12.11 <- function(runs = 10){
   alphas <- seq(0.2, 2, by = 0.2)
   functions <- c(accumulating_trace, replacing_trace, replacing_trace_and_cleaning, dutch_trace)
   
-  steps <- matrix(0, nrow = length(functions), ncol = length(alphas)) 
+  reward <- matrix(0, nrow = length(functions), ncol = length(alphas)) 
   for(i in seq_len(runs)){
     cat("run ", i, '\n')
     
-    steps <- steps + 
+    reward <- reward + 
       cross2(functions, alphas) %>%
       transpose() %>%
       pmap_dbl(~{
@@ -301,17 +301,17 @@ plot_fig12.11 <- function(runs = 10){
                        "true sarsa(lambda)")
   
   
-  plot <- melt(-steps / (runs * 20)) %>%
+  plot <- melt(-reward / (runs * 20)) %>%
     mutate(Var2 = rep(alphas, each = length(functions)),
            Var1 = rep(functions_names, times = length(alphas))) %>%
     ggplot(aes(x = Var2, y = value, group = Var1, color = as.factor(Var1))) +
     geom_line() +
     coord_cartesian(ylim = c(-550, -150)) +
     labs(x = expression(paste(alpha, " x number of tilings (8)")),
-         y  = "Steps per episode\naveraged over first 2- episodes", color = "") +
+         y  = "rewards per episode\naveraged over first 2- episodes", color = "") +
     theme(legend.position = "bottom")
   
-  return(steps)
+  return(plot)
 }
 
 

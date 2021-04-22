@@ -326,7 +326,8 @@ plot_fig10.4 <- function(runs = 10){
       ggplot(aes(x = Var2, y = value, group = Var1, color = as.factor(Var1))) +
       geom_line() +
       coord_cartesian(ylim = c(220, 300)) +
-      labs(x = expression(paste(alpha, " x number of tilings (8)")), y  = "Steps per episode\naveraged over first 50 episodes", color = "nsteps")
+      labs(x = expression(paste(alpha, " x number of tilings (8)")),
+           y = "steps per episode\naveraged over first 50 episodes", color = "nsteps")
     
     return(plot)
 }
