@@ -101,7 +101,7 @@ residual_error <- function(num_episodes, terminal_state, ...) {
 
 
 
-# plotting figure 12.6 and 12.8
+# plotting figures 12.6 and 12.8
 
 plot_fig12.6 <- function() {
 
