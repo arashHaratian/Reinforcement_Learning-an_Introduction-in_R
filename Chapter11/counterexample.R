@@ -86,7 +86,7 @@ semi_gradient_DP <- function(alpha, discount = 0.99){
       if(new_state == num_of_states)
         expected_return <- expected_return  + discount * theta %*% features[new_state, ]
     
-    error <- expected_return - theta %*% features[state, ]
+    error <- expected_return - (theta %*% features[state, ])
     delta <- delta + as.vector(error) * as.vector(features[state, ])
   }
   theta <<- theta + (alpha / num_of_states * delta)
