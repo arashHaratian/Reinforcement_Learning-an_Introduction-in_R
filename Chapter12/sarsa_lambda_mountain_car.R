@@ -1,6 +1,6 @@
 library(tidyverse)
 library(reshape2)
-source("./Chapter10/tiles3.R")  # or copy the source code
+source("./Chapter12/tiles3.R")  # or copy the source code
 
 
 resample <- function(x, ...)
