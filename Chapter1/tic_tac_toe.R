@@ -9,8 +9,6 @@ resample <- function(x, ...)
 num_rows <- 3L
 num_cols <- 3L
 
-# alpha <- 0.5
-# eps <- 0.01
 
 player_one <- 1L  #(x)
 player_two <- -1L #(o)
@@ -19,7 +17,7 @@ player_two <- -1L #(o)
 initialize <- function(init_state = 0L) {
   board <- matrix(init_state, num_rows, num_cols)
   return(board)
-} ## board <- initialize(c(1,1,0,0,1,0,0,0,1))
+} ## board <- initialize(c(1,-1,0,0,1,0,0,0,-1))
 
 
 # initializing the value table
@@ -206,7 +204,7 @@ run <- function(num_bins = 40, bin_size = 100, ...){
     avg[[i]] <- print(mean(temp))
   }
   invisible(avg)
-}# run()
+} ## run()
 
 
 runs <- function(num_runs = 10, num_bins = 40, bin_size = 100, ...) {
@@ -217,7 +215,7 @@ runs <- function(num_runs = 10, num_bins = 40, bin_size = 100, ...) {
   
   print(colMeans(mat))
   invisible(mat)
-} #runs()
+} ##runs()
 
 
 
