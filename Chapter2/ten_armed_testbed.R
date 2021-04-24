@@ -122,7 +122,7 @@ plot_fig2.1 <- function(n = 10, runs = 2000){
   true_means <- bandits_instance(1, T)$true_means
   true_means_df <- data.frame(actions = seq_len(n), value = true_means)
   df <- mat %>% 
-    as_tibble() %>% 
+    as.data.frame() %>% 
     rename_with(~paste0("action", seq_len(n)), .cols = everything()) %>% 
     pivot_longer(cols = everything(), names_to = "actions") %>% 
     mutate(actions = as_factor(actions))
@@ -198,7 +198,8 @@ plot_fig2.2.2 <- function(runs = 2000, steps = 1000) {
 
 
 
-##figure 3
+##figure 2.3
+
 plot_fig2.3 <- function(runs = 2000, steps = 1000) {
   
   
@@ -225,7 +226,7 @@ plot_fig2.3 <- function(runs = 2000, steps = 1000) {
 }
 
 
-##figure 4
+##figure 2.4
 
 plot_fig2.4 <- function(runs = 2000, steps = 1000) {
   
@@ -252,8 +253,7 @@ plot_fig2.4 <- function(runs = 2000, steps = 1000) {
 }
 
 
-##figure 5
-
+##figure 2.5
 
 plot_fig2.5 <- function(runs = 2000, steps = 1000) {
   
@@ -296,7 +296,7 @@ plot_fig2.5 <- function(runs = 2000, steps = 1000) {
 
 
 
-##figure 6
+##figure 2.6
 
 plot_fig2.6 <- function(runs = 2000, steps = 1000) {
   epsilons <- c(2 ^ (-7:-2))
@@ -312,19 +312,15 @@ plot_fig2.6 <- function(runs = 2000, steps = 1000) {
   
   for(i in seq_len(runs)){
     mat1[i, ] <- colMeans(as.data.frame(map(epsilons, ~bandit_agent(eps = .x, steps = steps)$rewards)))
-    # plot(matrix(data = c( -7:-2, colMeans(mat1)), nrow = 6), type = "l", col = "red", xlim = c(-7, 2), ylim = c(1, 1.5))
     df1 <- tibble("eps" = colMeans(mat1), "param" = -7:-2)
     
     mat2[i, ] <- colMeans(as.data.frame(map(step_sizes, ~bandit_agent(step_size = .x, is_gradient = T, is_gradient_baseline = T, steps = steps)$rewards)))
-    # lines(matrix(data = c( -5:1, colMeans(mat2)), nrow = 7), type = "l", col = "blue")
     df2 <- tibble("step_size" = colMeans(mat2), "param" = -5:1)
     
     mat3[i, ] <- colMeans(as.data.frame(map(UCB_degrees, ~bandit_agent(UCB_degree = .x, eps = 0, steps = steps)$rewards)))
-    # lines(matrix(data = c(-4:2, colMeans(mat4)), nrow = 7), type = "l", col = "black")
     df3 <- tibble("UCB" = colMeans(mat3), "param" = -4:2)
     
     mat4[i, ] <- colMeans(as.data.frame(map(init_values, ~bandit_agent(initial_action_value = .x, learning_function = learn_step_size, steps = steps)$rewards)))
-    # lines(matrix(data = c( -3:3, colMeans(mat4)), nrow = 7), type = "l", col = "green")
     df4 <- tibble("init" = colMeans(mat4), "param" = -2:2)
   }
   
@@ -347,12 +343,14 @@ plot_fig2.6 <- function(runs = 2000, steps = 1000) {
   return(plot)
 }
 
-# plotting the figures
 
-plot_fig2.1()
-plot_fig2.2.1()
-plot_fig2.2.2()
-plot_fig2.3()
-plot_fig2.4()
-plot_fig2.5()
-plot_fig2.6()
+
+
+
+# plot_fig2.1()
+# plot_fig2.2.1()
+# plot_fig2.2.2()
+# plot_fig2.3()
+# plot_fig2.4()
+# plot_fig2.5()
+# plot_fig2.6()
