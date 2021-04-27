@@ -172,5 +172,5 @@ plot_fig12.8 <- function() {
 
 
 
-plot_fig12.6()
-plot_fig12.8()
+# plot_fig12.6()
+# plot_fig12.8()

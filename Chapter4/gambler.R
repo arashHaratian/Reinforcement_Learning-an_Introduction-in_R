@@ -55,7 +55,7 @@ plot_fig4.3.1 <- function() {
   
   vi_result <- vi()
   
-  p1 <- vi_result %>% 
+  plot1 <- vi_result %>% 
     as.data.frame %>% 
     rename_with(.cols = everything(), .fn = ~paste0("sweep_", 1:16)) %>%
     mutate("capital" = 0:100) %>% 
@@ -64,12 +64,12 @@ plot_fig4.3.1 <- function() {
     geom_line() +
     labs(color = "", y = "value estimates")
   
-  return(p1)
+  return(plot1)
 }
 
 
 plot_fig4.3.2 <- function() {
-  p2 <- map_dbl(1:100, policy) %>% 
+  plot2 <- map_dbl(1:100, policy) %>% 
     as.data.frame %>% 
     rename(stake := `.`) %>% 
     mutate("capital" = 0:99) %>% 
@@ -77,9 +77,9 @@ plot_fig4.3.2 <- function() {
     geom_line() +
     labs(color = "", y = "final policy (stake)")
   
-  return(p2)
+  return(plot2)
 }
 
 
-plot_fig4.3.1()
-plot_fig4.3.2()
+# plot_fig4.3.1()
+# plot_fig4.3.2()

@@ -37,9 +37,6 @@ main <- function(){
   
   while(step < MAX_STEPS & failures < MAX_FAILURES){
     
-    
-    # step <- step + 1
-    
     y <- runif(1) < prob_push_right(w[box])
     
     e[box] <- e[box] + (1.0 - LAMBDAw) * (y - 0.5)

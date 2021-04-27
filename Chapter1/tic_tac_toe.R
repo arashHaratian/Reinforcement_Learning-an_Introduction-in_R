@@ -219,14 +219,14 @@ runs <- function(num_runs = 10, num_bins = 40, bin_size = 100, ...) {
 
 
 
-## using 'game()':
-value_table <- initialize_state_value(NA)
-game(verbose = T)
-
-## using 'run()'
-result_run <- run(40, 100, eps = 0.01, alpha = 0.5)
-plot(result_run, ty= "l")
-
-## using 'runs()'
-result_runs <- runs(10, 100, 100, eps = 0.01, alpha = 0.5)
-plot(colMeans(result_runs), ty= "l")
+# ## using 'game()':
+# value_table <- initialize_state_value(NA)
+# game(verbose = T)
+# 
+# ## using 'run()'
+# result_run <- run(40, 100, eps = 0.01, alpha = 0.5)
+# plot(result_run, ty= "l")
+# 
+# ## using 'runs()'
+# result_runs <- runs(10, 100, 100, eps = 0.01, alpha = 0.5)
+# plot(colMeans(result_runs), ty= "l")

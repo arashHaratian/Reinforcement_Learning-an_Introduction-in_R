@@ -1,5 +1,8 @@
 library(tidyverse)
 library(reshape2)
+library(patchwork)
+
+
 
 load_P_and_R <- function(lambda_requests, lambda_dropoffs){
   requests <- 0
@@ -152,7 +155,7 @@ plot_fig4.2 <- function(){
     geom_tile(aes(fill = value)) +
     labs(x = "#cars at second location",y = "#cars at first location")
   
-  patchwork::wrap_plots(plots)
+  wrap_plots(plots)
 }
 
-plot_fig4.2()
+# plot_fig4.2()

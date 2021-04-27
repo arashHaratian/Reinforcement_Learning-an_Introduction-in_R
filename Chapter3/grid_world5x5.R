@@ -100,15 +100,17 @@ compute_V_star <- function(discount = 0.9, return_best_actions = F){
 }
 
 
-result_V <- compute_V()
-round(result_V, 2)
 
-result_V_star <- compute_V_star(return_best_actions = T)
-round(result_V_star$values, 2)
-result_V_star$best_actions
+# result_V <- compute_V()
+# round(result_V, 2)
+# 
+# result_V_star <- compute_V_star(return_best_actions = T)
+# round(result_V_star$values, 2)
+# result_V_star$best_actions
 
 
-# ---- plotting figures
+
+# plotting figures
 
 
 plot_fig3.2 <- function(discount = 0.9){
@@ -141,5 +143,8 @@ plot_fig3.5 <- function(discount = 0.9){
 }
 
 
-plot_fig3.2()
-plot_fig3.5()
+# plot_fig3.2()
+# plot_fig3.5()
+
+
+

@@ -1,6 +1,6 @@
 library(tidyverse)
 library(reshape2)
-source("./Chapter12/tiles3.R")  # or copy the source code
+source("./tiles3.R")  # or copy the source code
 
 
 resample <- function(x, ...)
@@ -308,7 +308,7 @@ plot_fig12.11 <- function(runs = 10){
     geom_line() +
     coord_cartesian(ylim = c(-550, -150)) +
     labs(x = expression(paste(alpha, " x number of tilings (8)")),
-         y  = "rewards per episode\naveraged over first 2- episodes", color = "") +
+         y  = "rewards per episode\naveraged over first 20 episodes", color = "") +
     theme(legend.position = "bottom")
   
   return(plot)
@@ -317,6 +317,6 @@ plot_fig12.11 <- function(runs = 10){
 
 
 
-plot_fig12.10()
-plot_fig12.11()
+# plot_fig12.10()
+# plot_fig12.11()
 

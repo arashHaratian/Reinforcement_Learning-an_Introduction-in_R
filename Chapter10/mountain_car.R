@@ -1,7 +1,7 @@
 library(tidyverse)
 library(reshape2)
 library(patchwork)
-source("./Chapter10/tiles3.R")  # or copy the source code
+source("./tiles3.R")  # or copy the source code
 
 
 resample <- function(x, ...)
@@ -337,9 +337,9 @@ plot_fig10.4 <- function(runs = 10){
 
 
 
-plot_fig10.1()
-plot_fig10.2(10)
-plot_fig10.3(10)
-plot_fig10.4(3)
+# plot_fig10.1()
+# plot_fig10.2(10)
+# plot_fig10.3(10)
+# plot_fig10.4(3)
 
 

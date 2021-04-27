@@ -106,7 +106,7 @@ batch_training <- function(num_episodes, terminal_state, method, alpha){
 
 # plotting figures
 
-example6.2.1 <- function(with_terminal_states = F){
+example6.2.1 <- function(without_terminal_states = FALSE){
   init_state_values(7)
   
   
@@ -133,7 +133,7 @@ example6.2.1 <- function(with_terminal_states = F){
     lines +
     labs(y = "estimated value", colour = "")
   
-  if(with_terminal_states){
+  if(without_terminal_states){
     plot <- ggplot(states, aes(x = state)) +
       lines +
       xlim(2, 6) +
@@ -223,6 +223,6 @@ plot_fig6.2 <- function(){
 
 example6.2.1()
 example6.2.1(TRUE)
-example6.2.2()
-plot_fig6.2()
+# example6.2.2()
+# plot_fig6.2()
 

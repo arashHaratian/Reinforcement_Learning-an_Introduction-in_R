@@ -437,7 +437,7 @@ plot_fig9.5 <- function(runs = 30){
 
 true_value <- true_state_values()
 
-plot_fig9.1()
-plot_fig9.2.1()
-plot_fig9.2.2()
-plot_fig9.5(2)
+# plot_fig9.1()
+# plot_fig9.2.1()
+# plot_fig9.2.2()
+# plot_fig9.5(2)

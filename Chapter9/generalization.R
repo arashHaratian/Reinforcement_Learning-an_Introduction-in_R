@@ -97,7 +97,8 @@ plot_fig9.8 <- function(){
            coord_cartesian(ylim = c(low, high)) + 
            labs(title = paste(str_split(.y, "_") %>% transpose %>% pluck(2), "steps"),
                 y = paste(str_split(.y, "_") %>% transpose %>% pluck(1), "features"),
-                x = "")
+                x = "",
+                color = "")
     )
   
   plots[[1]] <- plots[[1]] + desired_function_line
@@ -108,4 +109,4 @@ plot_fig9.8 <- function(){
 }
 
 
-plot_fig9.8()
+# plot_fig9.8()

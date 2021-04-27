@@ -225,5 +225,5 @@ plot_fig5.2 <- function() {
 }
 
 
-plot_fig5.2()
+# plot_fig5.2()
 

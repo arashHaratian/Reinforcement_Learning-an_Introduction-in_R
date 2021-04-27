@@ -117,9 +117,9 @@ plot_fig8.8 <- function(){
 result_uniform <- list()
 result_on_policy <- list()
 
-ks <- c(1, 3, 10)
+bs <- c(1, 3, 10)
 
-for(b in ks){
+for(b in bs){
   performance_uniform <- 0
   performance_on_policy <- 0
   for(i in 1:30){
@@ -186,4 +186,4 @@ return(wrap_plots(P1, P2))
 
 
 
-plot_fig8.8()
+# plot_fig8.8()

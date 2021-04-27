@@ -192,7 +192,7 @@ example13.1 <- function(){
   
   plot <- ggplot(true_value_df, aes(x = probs, y = true_value)) +
     geom_line() +
-    geom_point(aes(color = "optimal optimal policy"), data = optimal_point, size = 2) +
+    geom_point(aes(color = "optimal stochastic policy"), data = optimal_point, size = 2) +
     geom_point(aes(color = "epsilon-greedy left"), data = epsilon_left_point, size = 2) +
     geom_point(aes(color = "epsilon-greedy right"), data = epsilon_right_point, size = 2) +
     coord_cartesian(ylim = c(-100, 0)) +
@@ -273,6 +273,6 @@ plot_fig13.2 <- function(){
 
 
 
-example13.1()
-plot_fig13.1()
-plot_fig13.2()
+# example13.1()
+# plot_fig13.1()
+# plot_fig13.2()

@@ -138,19 +138,19 @@ plot_fig4.1 <- function(discount = 1){
 
 
 
-# let's try the code
+## let's try the code
 
-#values
-compute_V()
-compute_V_star()
+## values
+# compute_V()
+# compute_V_star()
+# 
+## first 3 iteration values
+# iters_vals <- compute_V(return_all_iters = T)$all_iterations
+# map(.x = 1:3, ~matrix(iters_vals[.x, ], nrow = 4))
+# 
+##best_policy
+# compute_V_star(return_best_actions = T)
 
-#first 3 iteration values
-iters_vals <- compute_V(return_all_iters = T)$all_iterations
-map(.x = 1:3, ~matrix(iters_vals[.x, ], nrow = 4))
-
-#best_policy
-compute_V_star(return_best_actions = T)
-
-#plot
-plot_fig4.1()
+## plot
+# plot_fig4.1()
 
