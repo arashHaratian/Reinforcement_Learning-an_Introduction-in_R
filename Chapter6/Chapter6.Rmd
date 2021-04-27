@@ -1,0 +1,67 @@
+---
+title: "Chapter 6"
+author: "arash haratian"
+date: "3/31/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Random walk
+
+```{r, message = FALSE}
+source("./random_walk.R")
+```
+
+
+## Example 6.2 Random Walk
+
+### Values learned after various numbers of episodes on a single run of TD(0)
+
+```{r example6.2.1}
+example6.2.1()
+```
+
+
+### Learning curves for the two methods for various values of alpha
+
+```{r example6.2.2}
+example6.2.2()
+```
+
+
+
+## Figure 6.2: Performance of TD(0) and constant-alpha MC under batch training 
+
+```{r fig6.2}
+plot_fig6.2()
+```
+
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+
+# Maximization bias example
+
+```{r, message = FALSE}
+source("./maximization_bias.R")
+```
+
+
+## Figure 6.5: Comparison of Q-learning and Double Q-learning on a simple episodic MDP
+
+```{r fig6.5}
+plot_fig6.5()
+```
+

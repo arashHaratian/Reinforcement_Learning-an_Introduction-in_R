@@ -1,0 +1,42 @@
+---
+title: "Chapter 13"
+author: "arash haratian"
+date: "4/23/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Short corridor with switched actions
+
+```{r, message = FALSE}
+source("./short_corridor.R")
+```
+
+
+## Value of the first state over the probability of right action
+
+```{r example13.1}
+example13.1()
+```
+
+
+## Figure 13.1: REINFORCE
+
+```{r fig13.1}
+plot_fig13.1()
+```
+
+
+## Figure 13.2: Adding a baseline to REINFORCE can make it learn much faster
+
+```{r fig13.2}
+plot_fig13.2()
+```

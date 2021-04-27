@@ -1,0 +1,29 @@
+---
+title: "Chapter 8"
+author: "arash haratian"
+date: "4/4/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Trajectory sampling
+
+```{r, message = FALSE}
+source("./trajectory_sampling_experiment.R")
+```
+
+
+## Figure 8.8: Relative efficiency of updates distributed uniformly across the state space versus focused
+
+```{r fig8.8, results = "hide", fig.width = 12}
+plot_fig8.8()
+```
+

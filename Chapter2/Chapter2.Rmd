@@ -1,0 +1,69 @@
+---
+title: "Chapter 2"
+author: "arash haratian"
+date: "3/20/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 6, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# The 10-armed testbed
+
+```{r, message = FALSE}
+source("./ten_armed_testbed.R")
+```
+
+
+## Figure 2.1: Reward distribution of each action
+
+```{r fig2.1}
+plot_fig2.1()
+```
+
+## Figure 2.2: Average performance of epsilon-greedy action-value methods
+
+### Average reward
+
+```{r fig2.2.1}
+plot_fig2.2.1()
+```
+
+### Percentage of optimal action
+
+```{r fig2.2.2}
+plot_fig2.2.2()
+```
+
+## Figure 2.3: The effect of optimistic initial action-value estimates
+
+```{r fig2.3}
+plot_fig2.3()
+```
+
+
+## Figure 2.4: Average performance of UCB action selection
+
+```{r fig2.4}
+plot_fig2.4()
+```
+
+
+## Figure 2.5: Average performance of the gradient bandit algorithm
+
+```{r fig2.5}
+plot_fig2.5()
+```
+
+
+## Figure 2.6: A parameter study of the various bandit algorithms
+
+```{r fig2.6}
+plot_fig2.6()
+```
+

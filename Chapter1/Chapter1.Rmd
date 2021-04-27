@@ -1,0 +1,43 @@
+---
+title: "Chapter 1"
+author: "arash haratian"
+date: "3/16/2021"
+output: html_document
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+
+# Tic-Tac-Toe
+
+```{r}
+source("./tic_tac_toe.R")
+```
+
+
+
+## using 'game()':
+
+```{r}
+value_table <- initialize_state_value(NA)
+game(verbose = T)
+```
+
+## using 'run()'
+
+```{r}
+result_run <- run(40, 100, eps = 0.01, alpha = 0.5)
+plot(result_run, type = "l")
+```
+
+## using 'runs()'
+
+```{r}
+result_runs <- runs(10, 100, 100, eps = 0.01, alpha = 0.5)
+plot(colMeans(result_runs), type = "l")
+```
+

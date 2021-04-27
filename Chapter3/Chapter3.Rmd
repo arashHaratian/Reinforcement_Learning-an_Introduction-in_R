@@ -1,0 +1,63 @@
+---
+title: "Chapter 3"
+author: "arash haratian"
+date: "3/23/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Pole-balancing example
+
+```{r, message = FALSE}
+source("./pole.R")
+```
+
+
+## Calling `main()` and printing the result
+
+```{r}
+main()
+```
+
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Grid world
+
+```{r, message = FALSE}
+source("./grid_world5x5.R")
+```
+
+
+## Figure 3.2: State-values with random policy
+
+```{r fig3.2}
+plot_fig3.2()
+```
+
+
+## Figure 3.5: Optimal solutions to the gridworld example
+
+```{r fig3.5}
+plot_fig3.5()
+```
+
+
+### Printing optimal policy
+
+```{r}
+result_V_star <- compute_V_star(return_best_actions = T)
+result_V_star$best_actions
+```
+

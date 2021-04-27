@@ -1,0 +1,75 @@
+---
+title: "Chapter 9"
+author: "arash haratian"
+date: "4/11/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# State aggregation on the 1000-state random walk
+
+```{r, message = FALSE}
+source("./state_aggregation_random_walk.R")
+```
+
+## Figure 9.1: the gradient Monte Carlo algorithm
+
+```{r fig9.1, fig.width = 12}
+plot_fig9.1()
+```
+
+
+## Figure 9.2: Bootstrapping with state aggregation
+
+
+### Asymptotic values of semi-gradient TD
+
+```{r fig9.2.1}
+plot_fig9.2.1()
+```
+
+
+
+### Performance of n-step methods with state-aggregation
+
+```{r fig9.2.2}
+plot_fig9.2.2()
+```
+
+
+
+## Figure 9.5: Fourier basis vs polynomials
+
+```{r fig9.5}
+plot_fig9.5()
+```
+
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+
+# Coarseness of coarse coding
+```{r, message = TRUE}
+source("./generalization.R")
+```
+
+
+## Figure 9.8: Example of feature width’s effect
+
+```{r fig9.8, fig.width = 12, message = FALSE}
+plot_fig9.8()
+```
+
+

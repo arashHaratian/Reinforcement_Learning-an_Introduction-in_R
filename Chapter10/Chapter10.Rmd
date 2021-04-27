@@ -1,0 +1,80 @@
+---
+title: "Chapter 10"
+author: "arash haratian"
+date: "4/15/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Mountain Car task
+
+```{r, message = FALSE}
+source("./mountain_car.R")
+```
+
+
+## Figure 10.1: The Mountain Car task and the cost-to-go function
+
+
+### Interactive 3D plot
+
+```{r fig10.1_3D, message = FALSE, warning = FALSE, out.width = "100%"}
+plot_fig10.1(plot_heatmap = FALSE)
+```
+
+### Heatmap plot
+
+```{r fig10.1_heatmap, fig.width = 12, message = FALSE}
+plot_fig10.1(plot_heatmap = TRUE)
+```
+
+
+
+## Figure 10.2: Mountain Car learning curves for the semi-gradient Sarsa method with tile-coding
+
+```{r fig10.2, results = "hide"}
+plot_fig10.2()
+```
+
+
+## Figure 10.3: Performance of one-step vs 8-step semi-gradient Sarsa
+
+```{r fig10.3, results = "hide"}
+plot_fig10.3()
+```
+
+
+
+## Figure 10.4: Effect of the alpha and n on early performance of n-step semi-gradient Sarsa
+
+```{r fig10.4, results = "hide"}
+plot_fig10.4()
+```
+
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# An Access-Control queuing task
+
+```{r, message = FALSE}
+source("./queuing.R")
+```
+
+## Figure 10.5: The policy and value function found by differential semi-gradient one-step Sarsa
+
+
+```{r fig10.5}
+plot_fig10.5()
+```

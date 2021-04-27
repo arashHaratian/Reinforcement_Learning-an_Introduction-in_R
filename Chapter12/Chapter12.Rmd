@@ -1,0 +1,83 @@
+---
+title: "Chapter 12"
+author: "arash haratian"
+date: "4/22/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Offline lambda-return
+
+```{r, message = FALSE}
+source("./offline_lambda_return_random_walk.R")
+```
+
+
+## Figure 12.3: Performance of the off-line lambda-return algorithm on 19-state Random walk
+
+```{r fig12.3}
+plot_fig12.3()
+```
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# TD(lambda) and true online TD(lambda)
+
+```{r, message = FALSE}
+source("./TD_lambda_true_online_TD_lambda_random_walk.R")
+```
+
+
+## Figure 12.6: Performance of TD(lambda) algorithm on 19-state Random walk
+
+```{r fig12.6, warning = FALSE}
+plot_fig12.6()
+```
+
+
+## Figure 12.8: Performance of online lambda-return algorithm on 19-state Random walk
+
+```{r fig12.8}
+plot_fig12.8()
+```
+
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+
+# Sarsa(lambda)
+
+```{r, message = FALSE}
+source("./sarsa_lambda_mountain_car.R")
+```
+
+
+## Figure 12.10: Early performance on the Mountain Car task of Sarsa(lambda)
+
+```{r fig12.10, results = "hide"}
+plot_fig12.10()
+```
+
+
+
+## Figure 12.11: Summary comparison of Sarsa(lambda) algorithms on Mountain Car
+
+```{r fig12.11, results = "hide", fig.width = 12}
+plot_fig12.11()
+```

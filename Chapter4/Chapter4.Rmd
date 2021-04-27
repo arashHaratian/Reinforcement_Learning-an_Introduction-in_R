@@ -1,0 +1,81 @@
+---
+title: "Chapter 4"
+author: "arash haratian"
+date: "3/26/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Grid world
+
+```{r, message = FALSE}
+source("./grid_world4x4.R")
+```
+
+
+## Figure 4.1: Convergence of iterative policy evaluation on a small gridworld
+
+```{r fig4.1}
+plot_fig4.1()
+```
+
+
+### Printing optimal policy
+
+```{r best_actions}
+compute_V_star(return_best_actions = T)$best_actions
+```
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Jack’s car rental
+
+```{r, message = FALSE}
+source("./jacks.R")
+```
+
+## Figure 4.2: The sequence of policies found by policy iteration on Jack’s car rental problem, and the final state-value function
+
+```{r fig4.2, message = FALSE, fig.width = 12}
+plot_fig4.2()
+```
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Gambler’s problem
+
+```{r, message = FALSE}
+source("./gambler.R")
+```
+
+## Figure 4.3: The solution to the gambler’s problem
+
+
+### Value function
+
+```{r fig4.3.1}
+plot_fig4.3.1()
+```
+
+
+
+### Final policy
+
+```{r fig4.3.2}
+plot_fig4.3.2()
+```
+

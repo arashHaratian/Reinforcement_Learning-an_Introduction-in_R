@@ -1,0 +1,86 @@
+---
+title: "Chapter 5"
+author: "arash haratian"
+date: "3/29/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Monte Carlo policy evaluation
+
+```{r, message = FALSE}
+source("./Monte_Carlo_policy_evaluation_blackjack.R")
+```
+
+
+## Figure 5.1: Approximate state-value functions for the blackjack policy that sticks only on 20 or 21
+
+```{r fig5.1, fig.width = 12}
+plot_fig5.1()
+```
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Monte Carlo ES
+
+```{r, message = FALSE}
+source("./Monte_Carlo_ES.R")
+```
+
+## Figure 5.2: The optimal policy and state-value function for blackjack
+
+```{r fig5.2, fig.width = 12}
+plot_fig5.2()
+```
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Monte Carlo off-policy
+
+
+```{r, message = FALSE}
+source("./MC_off_policy_blackjack.R")
+```
+
+
+## Figure 5.3: Weighted importance sampling
+
+```{r fig5.3}
+plot_fig5.3()
+```
+
+
+```{r, echo = FALSE}
+rm(list = ls())
+```
+
+
+# Infinite variance
+
+```{r, message = FALSE}
+source("./InfinteVariance.R")
+```
+
+
+## Figure 5.4: Ordinary importance sampling produces surprisingly unstable estimates
+
+```{r}
+plot_fig5.4()
+```
+

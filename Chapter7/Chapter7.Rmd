@@ -1,0 +1,31 @@
+---
+title: "Chapter 7"
+author: "arash haratian"
+date: "4/2/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+# n-step TD methods on the random walk
+
+
+```{r, message = FALSE}
+source("./nstep_TD_radnom_walk.R")
+```
+
+
+
+## Figure 7.2: Performance of n-step TD methods as a function of alpha, for various values of n
+
+
+```{r fig7.2}
+plot_fig7.2()
+```
+

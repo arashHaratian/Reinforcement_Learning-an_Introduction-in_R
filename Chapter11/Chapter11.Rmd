@@ -1,0 +1,43 @@
+---
+title: "Chapter 11"
+author: "arash haratian"
+date: "4/18/2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.width = 7, fig.asp = 0.618, fig.align = "center")
+```
+
+
+# Baird’s counterexample
+
+```{r, message = FALSE}
+source("./counterexample.R")
+```
+
+
+## Figure 11.2: Demonstration of instability on Baird’s counterexample
+
+```{r fig11.2, fig.width = 12}
+plot_fig11.2()
+```
+
+
+## Figure 11.5: The behavior of the TDC algorithm
+
+```{r fig11.5, fig.width = 12}
+plot_fig11.5()
+```
+
+
+## Figure 11.6: The behavior of the one-step Emphatic-TD algorithm in expectation
+
+```{r fig11.6}
+plot_fig11.6()
+```
+
