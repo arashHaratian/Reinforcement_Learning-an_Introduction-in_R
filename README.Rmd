@@ -36,19 +36,19 @@ You can find the code usage examples in `.Rmd` files or in `.R` files.
 
 ## RMarkdown Outputs
 
-- [**Chapter 1**](Chapter1/Chapter1.html)
-- [**Chapter 2**](Chapter2/Chapter2.html)
-- [**Chapter 3**](Chapter3/Chapter3.html)
-- [**Chapter 4**](Chapter4/Chapter4.html)
-- [**Chapter 5**](Chapter5/Chapter5.html)
-- [**Chapter 6**](Chapter6/Chapter6.html)
-- [**Chapter 7**](Chapter7/Chapter7.html)
-- [**Chapter 8**](Chapter8/Chapter8.html)
-- [**Chapter 9**](Chapter9/Chapter9.html)
-- [**Chapter 10**](Chapter10/Chapter10.html)
-- [**Chapter 11**](Chapter11/Chapter11.html)
-- [**Chapter 12**](Chapter12/Chapter12.html)
-- [**Chapter 13**](Chapter13/Chapter13.html)
+- [**Chapter 1**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter1/Chapter1.html)
+- [**Chapter 2**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter2/Chapter2.html)
+- [**Chapter 3**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter3/Chapter3.html)
+- [**Chapter 4**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter4/Chapter4.html)
+- [**Chapter 5**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter5/Chapter5.html)
+- [**Chapter 6**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter6/Chapter6.html)
+- [**Chapter 7**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter7/Chapter7.html)
+- [**Chapter 8**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter8/Chapter8.html)
+- [**Chapter 9**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter9/Chapter9.html)
+- [**Chapter 10**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter10/Chapter10.html)
+- [**Chapter 11**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter11/Chapter11.html)
+- [**Chapter 12**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter12/Chapter12.html)
+- [**Chapter 13**](https://arashharatian.github.io/Reinforcement_Learning-an_Introduction-in_R/Chapter13/Chapter13.html)
 
 
 
