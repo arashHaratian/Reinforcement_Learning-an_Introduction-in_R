@@ -208,7 +208,6 @@ run <- function(num_bins = 40, bin_size = 100, ...){
 
 
 runs <- function(num_runs = 10, num_bins = 40, bin_size = 100, ...) {
-  ##CAUTION: you should make a global value_table (outside the function)
   mat <- matrix(nrow = num_runs, ncol = num_bins)
   for(i in seq_len(num_runs))
     mat[i, ] <- run(num_bins, bin_size, ...)
